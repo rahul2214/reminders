@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task List</title>
+</head>
+<body>
+    <h1  >Task List</h1>
+    <video id="camera" autoplay></video>
+    
+    <script>
+        // Get the camera element
+        const camera = document.getElementById('camera');
+
+        // Use getUserMedia to access the camera
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                camera.srcObject = stream;
+            })
+            .catch(function (error) {
+                console.error('Camera access denied:', error);
+            });
+    </script>
+    <div>
+    <p> hello , {{name}}</p>
+    <form method="post" action="/add_task"  >
+        <label for="username" >UserName:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="task"  >Task:</label>
+        <input type="text" id="task" name="task" required>
+        <br>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date">
+        <button type="submit" >Add Task</button>
+    </form>
+    </form>
+   
+{% for task in tasks %}
+
+{% endfor %}
+
+</body>
+</html>

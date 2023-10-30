@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Display</title>
+</head>
+<body>
+    <p> hello , {{name}}</p>
+    <script>
+        // Get the camera element
+        const camera = document.getElementById('camera');
+
+        // Use getUserMedia to access the camera
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                camera.srcObject = stream;
+            })
+            .catch(function (error) {
+                console.error('Camera access denied:', error);
+            });
+    </script>
+    <table>
+        {% if msg %}
+           <p>{{ msg }}</p>
+        {% else %}
+           <p> these are your remainders for today</p>
+        {% for item in data %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.task }}</td>
+                <td>{{ item.date }}</td>
+            </tr>
+        {% endfor %}
+        {% endif %}
+    </table>
+</body>
+</html>
+
+
